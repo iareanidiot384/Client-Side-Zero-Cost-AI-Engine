@@ -1,0 +1,17 @@
+{
+  "name": "zero-cost-ai-engine",
+  "version": "1.0.0",
+  "description": "Client-side AI engine that runs entirely in the browser with zero backend costs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.4.0"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}

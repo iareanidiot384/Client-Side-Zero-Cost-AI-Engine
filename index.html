@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zero-Cost AI Engine</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="url(#grad)" />
+            <path d="M8 16 L14 22 L24 10" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="grad" x1="0" y1="0" x2="32" y2="32">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#8b5cf6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <h1>Zero-Cost AI</h1>
+        </div>
+        <p class="tagline">100% client-side &middot; zero data leaves your device</p>
+      </header>
+
+      <!-- Hardware info banner -->
+      <section id="hw-info" class="hw-info" hidden>
+        <span id="hw-badge"></span>
+      </section>
+
+      <!-- Tab navigation -->
+      <nav class="tabs" role="tablist">
+        <button class="tab active" role="tab" data-tab="summarizer" aria-selected="true">
+          Summarizer
+        </button>
+        <button class="tab" role="tab" data-tab="sentiment" aria-selected="false">
+          Sentiment
+        </button>
+        <button class="tab" role="tab" data-tab="image-class" aria-selected="false">
+          Image Classifier
+        </button>
+        <button class="tab" role="tab" data-tab="bg-remove" aria-selected="false">
+          BG Remover
+        </button>
+        <button class="tab" role="tab" data-tab="cache" aria-selected="false">
+          Cache
+        </button>
+      </nav>
+
+      <!-- Tab panels -->
+      <main class="panels">
+        <!-- Summarizer -->
+        <section id="panel-summarizer" class="panel active" role="tabpanel">
+          <h2>Text Summarizer</h2>
+          <p class="desc">Paste any text and get a concise summary, processed entirely on your device.</p>
+          <textarea id="summarizer-input" rows="8" placeholder="Paste or type a long article, paragraph, or document here…"></textarea>
+          <button id="summarizer-run" class="btn primary" disabled>Summarize</button>
+          <div id="summarizer-status" class="status" hidden></div>
+          <div id="summarizer-output" class="output" hidden></div>
+        </section>
+
+        <!-- Sentiment -->
+        <section id="panel-sentiment" class="panel" role="tabpanel" hidden>
+          <h2>Sentiment Analysis</h2>
+          <p class="desc">Type a sentence and detect its emotional tone, positive, negative, or neutral.</p>
+          <textarea id="sentiment-input" rows="4" placeholder="e.g. I absolutely loved the new movie!"></textarea>
+          <button id="sentiment-run" class="btn primary" disabled>Analyze</button>
+          <div id="sentiment-status" class="status" hidden></div>
+          <div id="sentiment-output" class="output" hidden></div>
+        </section>
+
+        <!-- Image Classification -->
+        <section id="panel-image-class" class="panel" role="tabpanel" hidden>
+          <h2>Image Classifier</h2>
+          <p class="desc">Upload or drop an image to classify its contents using a MobileNet model.</p>
+          <div id="image-class-dropzone" class="dropzone">
+            <input type="file" id="image-class-file" accept="image/*" hidden />
+            <p>Drag and drop an image here, or <button class="link-btn" id="image-class-browse">browse</button></p>
+          </div>
+          <img id="image-class-preview" class="preview-img" hidden />
+          <button id="image-class-run" class="btn primary" disabled>Classify</button>
+          <div id="image-class-status" class="status" hidden></div>
+          <div id="image-class-output" class="output" hidden></div>
+        </section>
+
+        <!-- Background Removal -->
+        <section id="panel-bg-remove" class="panel" role="tabpanel" hidden>
+          <h2>Background Remover</h2>
+          <p class="desc">Upload an image to remove its background, all processing on-device.</p>
+          <div id="bg-remove-dropzone" class="dropzone">
+            <input type="file" id="bg-remove-file" accept="image/*" hidden />
+            <p>Drag and drop an image here, or <button class="link-btn" id="bg-remove-browse">browse</button></p>
+          </div>
+          <img id="bg-remove-preview" class="preview-img" hidden />
+          <button id="bg-remove-run" class="btn primary" disabled>Remove Background</button>
+          <div id="bg-remove-status" class="status" hidden></div>
+          <div id="bg-remove-output" class="output" hidden>
+            <canvas id="bg-remove-canvas" hidden></canvas>
+            <a id="bg-remove-download" class="btn secondary" hidden>Download Result</a>
+          </div>
+        </section>
+
+        <!-- Cache management -->
+        <section id="panel-cache" class="panel" role="tabpanel" hidden>
+          <h2>Model Cache</h2>
+          <p class="desc">Models are cached locally in your browser. Manage them here.</p>
+          <div id="cache-list" class="cache-list">
+            <p class="muted">Loading cache info…</p>
+          </div>
+          <button id="cache-clear" class="btn danger">Clear All Cached Models</button>
+        </section>
+      </main>
+
+      <!-- Global loading overlay -->
+      <div id="loading-overlay" class="loading-overlay" hidden>
+        <div class="spinner"></div>
+        <p id="loading-text">Downloading model…</p>
+        <div class="progress-bar-container">
+          <div id="loading-progress" class="progress-bar"></div>
+        </div>
+        <p id="loading-percent" class="loading-percent"></p>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
