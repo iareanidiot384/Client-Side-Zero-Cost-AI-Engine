@@ -46,7 +46,11 @@ Other highlights:
 - Node.js 18 or later
 - A recent browser (Chrome 113+, Edge 113+, Firefox 114+, or Safari 17+)
 
-### Install and Run
+### Use via website
+
+Visit https://iareanidiot384.github.io/Client-Side-Zero-Cost-AI-Engine/
+
+### Install and Run on your own PC
 
 ```bash
 npm install
@@ -95,10 +99,10 @@ The compiled files are written to `dist/`. You can deploy that folder to any sta
      Hugging Face CDN
 ```
 
-1. **First visit**, The chosen model is fetched from the Hugging Face CDN and written into the browser's Cache API. An IndexedDB record tracks its name, task, and size.
-2. **Return visits**, The model loads directly from the local cache with no network traffic.
-3. **Inference**, A Web Worker runs the Transformers.js pipeline. The runtime automatically falls back from WebGPU to WebGL to WASM depending on what the browser supports.
-4. **Privacy**, User data never leaves the device. All processing is local.
+1. **First visit**: The chosen model is fetched from the Hugging Face CDN and written into the browser's Cache API. An IndexedDB record tracks its name, task, and size.
+2. **Return visits**: The model loads directly from the local cache with no network traffic.
+3. **Inference**: A Web Worker runs the Transformers.js pipeline. The runtime automatically falls back from WebGPU to WebGL to WASM depending on what the browser supports.
+4. **Privacy**: User data never leaves the device. All processing is local.
 
 ---
 
